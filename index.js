@@ -42,6 +42,7 @@ const validateInvestments = (investments) => {
       if (_budget[investment["Sector"]]) {
         //Continue for same month
         if (monthOfInvestment === previousMonth) {
+          //If current investment found in budget's rule then continue
           if (
             investment["Sector"].Sector === _budget[investment["Sector"].Sector]
           ) {
@@ -52,7 +53,7 @@ const validateInvestments = (investments) => {
                   budgetDefaultRulesForAll["Month"].Amount) ||
               totalInvestmentForMonth <= budgetDefaultRules["FinTech"].Amount
             ) {
-              //Do
+              //Do investment
               totalInvestmentForMonth += parseInt(investment["Amount"]);
               _budget[investment["Sector"]].Amount =
                 _budget[investment["Sector"]].Amount - investment["Amount"];
@@ -62,7 +63,7 @@ const validateInvestments = (investments) => {
             }
           }
         } else {
-          //Reset all rules
+          //For next month reset all rules
           totalInvestmentForMonth = 0;
           _budget = budgetDefaultRules;
           budgetForAll = budgetDefaultRulesForAll;
@@ -86,7 +87,7 @@ const validateInvestments = (investments) => {
           }
         }
       } else {
-        //Search in common budget (budgetForAll) which are not present in rule
+        //Search in common budget (budgetForAll)
         totalInvestmentForMonth = 0;
         _budget = budgetDefaultRules;
         budgetForAll = budgetDefaultRulesForAll;

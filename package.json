@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node --harmony-top-level-await index.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon --harmony-top-level-await index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Prathamesh More",
